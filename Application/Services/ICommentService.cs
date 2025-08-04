@@ -3,10 +3,10 @@ using Application.Interfaces;
 
 namespace Application.Services
 {
-    public class CommentService
+    public class ICommentService
     {
         private readonly ICommentRepo _repo;
-        public CommentService(ICommentRepo repo) {  _repo = repo; }
+        public ICommentService(ICommentRepo repo) {  _repo = repo; }
         
         public async Task<IEnumerable<Comment>> GetAllAsync() { return await _repo.GetAllAsync(); }
 

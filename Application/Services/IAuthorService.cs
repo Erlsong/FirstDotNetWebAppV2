@@ -4,12 +4,12 @@ using Application.Interfaces;
 
 namespace Application.Services
 {
-    public class AuthorService
+    public class IAuthorService
     {
         private readonly IAuthorRepo _repository;
-        public AuthorService(IAuthorRepo repository) {  _repository = repository; }
+        public IAuthorService(IAuthorRepo repository) {  _repository = repository; }
         
-        public async Task<IEnumerable<Author>> GetAll()
+        public async Task<IEnumerable<Author>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }

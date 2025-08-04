@@ -35,11 +35,11 @@ namespace BloggerAppV2.Tests.AuthorServiceTests // Adjust namespace
 
             // 4. Instantiate the System Under Test (SUT) - your AuthorService.
             //    Inject the mock repository's object, not the mock itself.
-            var service = new AuthorService(mockRepo.Object);
+            var service = new IAuthorService(mockRepo.Object);
 
             // Act
             // This is where you call the method being tested.
-            var result = await service.GetAll();
+            var result = await service.GetAllAsync();
 
             // Assert
             // This is where you verify the result and behavior.

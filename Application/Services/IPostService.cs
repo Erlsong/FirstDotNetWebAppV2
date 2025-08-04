@@ -2,10 +2,10 @@
 
 namespace Application.Services
 {
-    public class PostService
+    public class IPostService
     {
         private readonly IPostRepo _postRepo;
-        public PostService(IPostRepo postRepo)
+        public IPostService(IPostRepo postRepo)
         {
             _postRepo = postRepo;
         }

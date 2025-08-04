@@ -3,10 +3,10 @@ using Application.Interfaces;
 
 namespace Application.Services
 {
-    public class AlbumService
+    public class IAlbumService
     {
         private readonly IAlbumRepo _repository;
-        public AlbumService(IAlbumRepo repository)
+        public IAlbumService(IAlbumRepo repository)
         {
             _repository = repository;
         }
