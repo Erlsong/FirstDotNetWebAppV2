@@ -11,7 +11,7 @@ namespace Infrastructure.Data
         public DbSet<Album> Albums { get; set; }
         
         public DbSet<Post> Posts { get; set; }
-
+        
         public DbSet<Comment> Comments { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
