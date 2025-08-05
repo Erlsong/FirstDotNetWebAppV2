@@ -9,8 +9,9 @@ using Presentation.Models.Requests;
 
 namespace Presentation.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    
     public class AuthorController : ControllerBase
     {
         private readonly IAuthorService _authorService;
@@ -21,6 +22,14 @@ namespace Presentation.Controllers
             _authorService = authorService;
             _logger = logger;
         }
+
+
+        public class LoginRequest
+        {
+            public string PenName { get; set; } = null!;
+            public string Password { get; set; } = null!;
+        }
+
 
         [HttpGet("All")]
         public async Task<ActionResult<IEnumerable<Author>>> GetAll()
@@ -72,18 +81,34 @@ namespace Presentation.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(Author request, int id)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] UpdateAuthorRequest request)
         {
             try
             {
-                var requestedAuthor = await _authorService.GetByIdAsync(id);
-                if (requestedAuthor == null) {  return NotFound(); }
+                var existingAuthor = await _authorService.GetByIdAsync(id);
+                if (existingAuthor == null)
+                    return NotFound();
 
-                return Ok(await _authorService.UpdateAsync(request));
+                
+                if (!string.IsNullOrWhiteSpace(request.PenName))
+                    existingAuthor.PenName = request.PenName;
 
+                if (!string.IsNullOrWhiteSpace(request.Email))
+                    existingAuthor.Email = request.Email;
+
+                if (!string.IsNullOrWhiteSpace(request.Password))
+                    existingAuthor.HashedPassword = _authorService.HashPassword(request.Password); 
+
+                var result = await _authorService.UpdateAsync(existingAuthor);
+                return Ok(result);
             }
-            catch (Exception ex) { return BadRequest(ex.Message); }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating author.");
+                return BadRequest("Failed to update author.");
+            }
         }
+
 
 
         [HttpDelete("{id}")]

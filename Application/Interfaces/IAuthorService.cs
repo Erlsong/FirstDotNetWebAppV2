@@ -8,6 +8,7 @@ namespace Application.Interfaces
         Task<Author?> GetByPenNameAsync(string penName);
         Task<Author?> GetByIdAsync(int id);
         Task<bool> CreateAuthorWithPasswordAsync(string penName, string email, string password);
+        string HashPassword(string password);
         Task<bool> UpdateAsync(Author author);
         Task<bool> DeleteAsync(int id);
     }
