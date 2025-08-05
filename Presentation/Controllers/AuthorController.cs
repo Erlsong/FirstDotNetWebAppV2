@@ -3,6 +3,9 @@ using Application.Services;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Presentation.Models;
+using Presentation.Models.Requests;
+
 
 namespace Presentation.Controllers
 {
@@ -50,24 +53,21 @@ namespace Presentation.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> PostAuthor(Author request)
+        public async Task<IActionResult> PostAuthor([FromBody] CreateAuthorRequest request)
         {
             try
             {
-                var existingAuthor = await _authorService.GetByIdAsync(request.Id);
-                if (existingAuthor != null)
-                {
-                    return BadRequest("Author already exists.");
-                }
+                
+                var existing = await _authorService.GetByPenNameAsync(request.PenName!);
+                if (existing != null) return BadRequest("PenName already exists.");
 
-                var result = await _authorService.CreateAsync(request);
-
+                var result = await _authorService.CreateAuthorWithPasswordAsync(request.PenName!, request.Email!, request.Password!);
                 return Ok(result);
-
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                _logger.LogError(ex, "Error creating author.");
+                return BadRequest("Failed to create author.");
             }
         }
 
@@ -85,19 +85,24 @@ namespace Presentation.Controllers
             catch (Exception ex) { return BadRequest(ex.Message); }
         }
 
-   
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             try
             {
                 var author = await _authorService.GetByIdAsync(id);
-                if (author == null) { return NotFound(); }
+                if (author == null) return NotFound();
 
-                return Ok( await _authorService.UpdateAsync(author));
+                await _authorService.DeleteAsync(id); 
+                return NoContent();
             }
-            catch (Exception ex) { return StatusCode(500, ex.Message); }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
+
     }
 }
 

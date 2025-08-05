@@ -19,6 +19,12 @@ namespace Infrastructure.Data.Repository
             return await _context.Authors.ToListAsync();
         }
 
+        public async Task<Author?> GetByPenNameAsync(string penName)
+        {
+            
+            return await _context.Authors.FirstOrDefaultAsync(a => a.PenName == penName);
+
+        }
         public async Task<Author?> GetByIdAsync(int id)
         {
             return await _context.Authors.FindAsync(id);

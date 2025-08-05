@@ -5,8 +5,9 @@ namespace Application.Interfaces
     public interface IAuthorService
     {
         Task<IEnumerable<Author>> GetAllAsync();
+        Task<Author?> GetByPenNameAsync(string penName);
         Task<Author?> GetByIdAsync(int id);
-        Task<bool> CreateAsync(Author author);
+        Task<bool> CreateAuthorWithPasswordAsync(string penName, string email, string password);
         Task<bool> UpdateAsync(Author author);
         Task<bool> DeleteAsync(int id);
     }

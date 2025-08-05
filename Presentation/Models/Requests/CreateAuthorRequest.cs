@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Presentation.Models.Requests
+{
+    public class CreateAuthorRequest
+    {
+        [Required]
+        [MaxLength(100)]
+        public string? PenName { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string? Password { get; set; }
+
+
+        [Required]
+        [MaxLength(100)]
+        public string? Email { get; set; }
+
+    }
+}
+

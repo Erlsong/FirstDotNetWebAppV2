@@ -10,6 +10,7 @@ namespace Application.Interfaces
     public interface IAuthorRepository
     {
         Task<IEnumerable<Author>> GetAllAsync();
+        Task<Author?> GetByPenNameAsync(string penName);
         Task<Author?> GetByIdAsync(int id);
         Task<bool> CreateAsync(Author author);
         Task<bool> UpdateAsync(Author author);
