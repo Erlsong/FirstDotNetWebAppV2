@@ -24,14 +24,6 @@ namespace Presentation.Controllers
             _logger = logger;
         }
 
-
-        public class LoginRequest
-        {
-            public string PenName { get; set; } = null!;
-            public string Password { get; set; } = null!;
-        }
-
-
         [HttpGet("All")]
         public async Task<ActionResult<IEnumerable<Author>>> GetAll()
         {

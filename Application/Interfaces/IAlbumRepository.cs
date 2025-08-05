@@ -9,7 +9,7 @@ namespace Application.Interfaces
 {
     public interface IAlbumRepository
     {
-        Task<IEnumerable<Album>> GetAllAsync();
+        Task<IEnumerable<Album>> GetAllByAuthorAsync(int authorId);
         Task<Album?> GetByIdAsync(int id);
         Task<bool> DeleteAsync(int id);
         Task<bool> CreateAsync(Album album);
