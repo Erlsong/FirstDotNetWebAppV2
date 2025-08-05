@@ -4,17 +4,17 @@ using Application.Interfaces;
 
 namespace Application.Services
 {
-    public class IAuthorService
+    public class AuthorService : IAuthorService
     {
-        private readonly IAuthorRepo _repository;
-        public IAuthorService(IAuthorRepo repository) {  _repository = repository; }
+        private readonly IAuthorRepository _repository;
+        public AuthorService(IAuthorRepository repository) {  _repository = repository; }
         
         public async Task<IEnumerable<Author>> GetAllAsync()
         {
             return await _repository.GetAllAsync();
         }
 
-        public async Task<Author> GetByIdAsync(int id)
+        public async Task<Author?> GetByIdAsync(int id)
         {
             return await _repository.GetByIdAsync(id);
         } 

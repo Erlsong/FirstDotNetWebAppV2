@@ -2,6 +2,7 @@
 using Application.Services;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Presentation.Controllers
 {
@@ -10,16 +11,20 @@ namespace Presentation.Controllers
     public class AuthorController : ControllerBase
     {
         private readonly IAuthorService _authorService;
+        private readonly ILogger<AuthorController> _logger;
 
-        public AuthorController(IAuthorService authorService)
+        public AuthorController(IAuthorService authorService, ILogger<AuthorController> logger)
         {
             _authorService = authorService;
+            _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("All")]
         public async Task<ActionResult<IEnumerable<Author>>> GetAll()
         {
+            _logger.LogInformation("Attempting to get all authors.");
             var authors = await _authorService.GetAllAsync();
+            _logger.LogInformation($"Successfully retrieved {authors.Count()} authors.");
             return Ok(authors);
         }
 

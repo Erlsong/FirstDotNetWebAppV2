@@ -26,7 +26,7 @@ namespace BloggerAppV2.Tests.AuthorServiceTests // Adjust namespace
             };
 
             // 2. Create a mock object for the IAuthorRepo dependency
-            var mockRepo = new Mock<IAuthorRepo>();
+            var mockRepo = new Mock<IAuthorRepository>();
 
             // 3. Set up the mock's behavior: when GetAllAsync() is called,
             //    it should return our mock data.
@@ -35,7 +35,7 @@ namespace BloggerAppV2.Tests.AuthorServiceTests // Adjust namespace
 
             // 4. Instantiate the System Under Test (SUT) - your AuthorService.
             //    Inject the mock repository's object, not the mock itself.
-            var service = new IAuthorService(mockRepo.Object);
+            var service = new AuthorService(mockRepo.Object);
 
             // Act
             // This is where you call the method being tested.

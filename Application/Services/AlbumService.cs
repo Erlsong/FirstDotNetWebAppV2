@@ -3,17 +3,17 @@ using Application.Interfaces;
 
 namespace Application.Services
 {
-    public class IAlbumService
+    public class AlbumService: IAlbumService
     {
-        private readonly IAlbumRepo _repository;
-        public IAlbumService(IAlbumRepo repository)
+        private readonly IAlbumRepository _repository;
+        public AlbumService(IAlbumRepository repository)
         {
             _repository = repository;
         }
 
         public async Task<IEnumerable<Album>> GetAllAsync() {  return await _repository.GetAllAsync(); }
 
-        public async Task<Album> GetByIdAsync(int id) { return  await _repository.GetByIdAsync(id);}
+        public async Task<Album?> GetByIdAsync(int id) { return  await _repository.GetByIdAsync(id);}
 
         public async Task<bool> DeleteAsync(int id) { return await _repository.DeleteAsync(id); }
 
