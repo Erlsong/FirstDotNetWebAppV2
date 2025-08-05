@@ -11,7 +11,7 @@ namespace Application.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Album>> GetAllByAuthorAsync(int authorid) {  return await _repository.GetAllAsync(); }
+        public async Task<IEnumerable<Album>> GetAllByAuthorAsync(int authorId) {  return await _repository.GetAllByAuthorAsync(authorId); }
 
         public async Task<Album?> GetByIdAsync(int id) { return  await _repository.GetByIdAsync(id);}
 
