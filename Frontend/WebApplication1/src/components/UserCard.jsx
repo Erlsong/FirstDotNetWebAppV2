@@ -1,7 +1,7 @@
 import reactLogo from '../assets/react.svg'
 export default function UserCard({ user }) {
     return (
-        <div className="user-card">
+        <div className="user-card card">
             <img src={reactLogo} alt={`img`} />
             <h3>{user.PenName}</h3>
             <p>{user.email}</p>

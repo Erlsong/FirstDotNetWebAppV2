@@ -15,7 +15,7 @@ export default function UserCardGrid() {
 
     return (
         <>
-            <div className="user-grid">
+            <div className="user-grid card-grid">
                 {users.map((user, index) => (
                     <UserCard key={index} user={user} />
                 ))}

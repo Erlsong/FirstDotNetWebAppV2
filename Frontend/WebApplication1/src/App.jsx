@@ -1,13 +1,15 @@
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import TestingStage from './components/TestingStage.jsx'
-import UserCardGrid from './components/UserCardGrid.jsx'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
+import Homepage from './pages/HomePage'
 
 function App() {
   return (
     <>
-      <UserCardGrid />
-      <TestingStage />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Homepage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 
