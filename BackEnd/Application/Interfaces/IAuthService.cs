@@ -6,6 +6,6 @@ namespace Application.Interfaces
     public interface IAuthService
     {
         Task<string?> AuthenticateAsync(string email, string password);
-        string GenerateToken(Author author);
+        string GenerateToken(User user);
     }
 }

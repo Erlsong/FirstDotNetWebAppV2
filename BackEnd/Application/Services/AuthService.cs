@@ -15,35 +15,35 @@ namespace Application.Services
     public class AuthService : IAuthService
     {
         private readonly JwtSettings _jwtSettings;
-        private readonly IAuthorService _authorService;
+        private readonly IUserService _userService;
         private readonly PasswordHasher<object> _passwordHasher = new PasswordHasher<object>();
 
-        public AuthService(IOptions<JwtSettings> options, IAuthorService authorService)
+        public AuthService(IOptions<JwtSettings> options, IUserService userService)
         {
             _jwtSettings = options.Value;
-            _authorService = authorService;
+            _userService = userService;
         }
 
-        public async Task<string?> AuthenticateAsync(string penName, string password)
+        public async Task<string?> AuthenticateAsync(string email, string password)
         {
-            var author = await _authorService.GetByPenNameAsync(penName);
-            if (author == null)
+            var user = await _userService.GetByEmailAsync(email);
+            if (user == null)
                 return null;
 
-            var verifyResult = _passwordHasher.VerifyHashedPassword(null, author.HashedPassword, password);
+            var verifyResult = _passwordHasher.VerifyHashedPassword(null, user.HashedPassword, password);
             if (verifyResult != PasswordVerificationResult.Success)
                 return null;
 
-            return GenerateToken(author);
+            return GenerateToken(user);
         }
 
-        public string GenerateToken(Author author)
+        public string GenerateToken(User user)
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, author.Id.ToString()),
-                new Claim(ClaimTypes.Name, author.PenName),
-                new Claim(ClaimTypes.Role, author.Role)
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.PenName),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));

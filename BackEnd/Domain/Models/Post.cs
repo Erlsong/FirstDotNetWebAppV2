@@ -10,16 +10,16 @@ namespace Domain.Models
         public string Description {get; set;}
         public string Content { get; set;}
         public int AlbumId { get; set; }
-        public int AuthorId { get; set; }
+        public int UserId { get; set; }
 
-        public Post(int id, string title, string description, string content, int albumId, int authorId)
+        public Post(int id, string title, string description, string content, int albumId, int userId)
         {
             Id = id;
             Title = title;
             Description = description;
             Content = content;
             AlbumId = albumId;
-            AuthorId = authorId;
+            UserId = userId;
         }
         public Post()
         {

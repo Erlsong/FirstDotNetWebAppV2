@@ -2,7 +2,7 @@
 
 namespace Presentation.Models.Requests
 {
-    public class CreateAuthorRequest
+    public class CreateUserRequest
     {
         [Required]
         [MaxLength(100)]

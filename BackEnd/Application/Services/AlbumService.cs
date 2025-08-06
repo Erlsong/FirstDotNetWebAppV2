@@ -12,7 +12,7 @@ namespace Application.Services
         }
 
         public async Task<IEnumerable<Album>> GetAllAsync() { return await _repository.GetAllAsync(); }
-        public async Task<IEnumerable<Album>> GetAllByAuthorAsync(int authorId) {  return await _repository.GetAllByAuthorAsync(authorId); }
+        public async Task<IEnumerable<Album>> GetAllByUserAsync(int UserId) {  return await _repository.GetAllByUserAsync(UserId); }
 
         public async Task<Album?> GetByIdAsync(int id) { return  await _repository.GetByIdAsync(id);}
 

@@ -1,6 +1,6 @@
 ﻿namespace Presentation.Models.Requests
 {
-    public class UpdateAuthorRequest
+    public class UpdateUserRequest
     {
         public string? PenName { get; set; }
         public string? Email { get; set; }

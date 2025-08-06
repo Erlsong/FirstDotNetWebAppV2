@@ -35,11 +35,11 @@ namespace Presentation.Controllers
             return Ok(albums);
         } 
    
-        [HttpGet("All-By-Author/{authorId}")]
-        public async Task<ActionResult<IEnumerable<Album>>> GetAllByAuthor(int authorId)
+        [HttpGet("All-By-User/{userId}")]
+        public async Task<ActionResult<IEnumerable<Album>>> GetAllByUser(int userId)
         {
-            _logger.LogInformation($"Attempting to get all Albums from Author with AuthorID: {authorId}.");
-            var albums = await _albumService.GetAllByAuthorAsync(authorId);
+            _logger.LogInformation($"Attempting to get all Albums from User with UserID: {userId}.");
+            var albums = await _albumService.GetAllByUserAsync(userId);
             _logger.LogInformation($"Successfully retrieved {albums.Count()} Albums.");
             return Ok(albums);
         }
@@ -84,7 +84,7 @@ namespace Presentation.Controllers
                     Name = request.Name!,
                     Description = request.Description!,
                     Count = 0,
-                    AuthorId = int.Parse(userIdClaim.Value)
+                    UserId = int.Parse(userIdClaim.Value)
                 };
 
 
@@ -119,7 +119,7 @@ namespace Presentation.Controllers
                 if (userIdClaim == null) return Unauthorized();
 
                 int userId = int.Parse(userIdClaim.Value);
-                if (existingAlbum.AuthorId != userId)
+                if (existingAlbum.UserId != userId)
                 {
                     return Unauthorized("You do not own this album.");
                 }
@@ -155,7 +155,7 @@ namespace Presentation.Controllers
                 if (userIdClaim == null) return Unauthorized();
 
                 int userId = int.Parse(userIdClaim.Value);
-                if (album.AuthorId != userId)
+                if (album.UserId != userId)
                 {
                     return Unauthorized("You do not own this album.");
                 }

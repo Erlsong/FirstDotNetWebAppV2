@@ -74,8 +74,8 @@ builder.Services.AddSwaggerGen(c =>
 
 
 // Dependency Injection: Register services and repositories
-builder.Services.AddScoped<IAuthorService, AuthorService>();
-builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAlbumService, AlbumService>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();

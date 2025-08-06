@@ -8,15 +8,15 @@ namespace Domain.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public int? Count { get; set; }
-        public int AuthorId { get; set; }
+        public int UserId { get; set; }
         
-        public Album(int id,  string name, string description, int? count, int authorId)
+        public Album(int id,  string name, string description, int? count, int userId)
         {
             Id = id;
             Name = name;
             Description = description;
             Count = count;
-            AuthorId = authorId;
+            UserId = userId;
         }
 
         public Album() {
@@ -27,7 +27,7 @@ namespace Domain.Models
 
         public override bool Equals(object? obj)
         {
-            if (obj is not Author other) return false;
+            if (obj is not User other) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return Id == other.Id;
