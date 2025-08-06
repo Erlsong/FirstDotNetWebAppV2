@@ -27,6 +27,18 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// CORS: React Server
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 // Swagger: API docs + XML comments
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -101,6 +113,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Allow React Cors
+app.UseCors("AllowReactApp");
 
 // Redirect root to Swagger UI
 app.MapGet("/", () => Results.Redirect("/swagger"));

@@ -24,7 +24,7 @@ namespace Presentation.Controllers
             _logger = logger;
         }
 
-        [HttpGet("All")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAll()
         {
             _logger.LogInformation("Attempting to get all authors.");
