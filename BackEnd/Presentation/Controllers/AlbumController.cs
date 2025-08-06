@@ -26,14 +26,22 @@ namespace Presentation.Controllers
         }
 
 
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Album>>> GetAll()
+        {
+            _logger.LogInformation($"Attempting to get all albums.");
+            var albums = await _albumService.GetAllAsync();
+            return Ok(albums);
+        } 
    
         [HttpGet("All-By-Author/{authorId}")]
         public async Task<ActionResult<IEnumerable<Album>>> GetAllByAuthor(int authorId)
         {
             _logger.LogInformation($"Attempting to get all Albums from Author with AuthorID: {authorId}.");
-            var Albums = await _albumService.GetAllByAuthorAsync(authorId);
-            _logger.LogInformation($"Successfully retrieved {Albums.Count()} Albums.");
-            return Ok(Albums);
+            var albums = await _albumService.GetAllByAuthorAsync(authorId);
+            _logger.LogInformation($"Successfully retrieved {albums.Count()} Albums.");
+            return Ok(albums);
         }
 
         [HttpGet("{id}")]
