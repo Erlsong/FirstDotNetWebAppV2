@@ -8,7 +8,11 @@ export default function AlbumCardGrid() {
         fetch("https://localhost:59834/api/album")
             .then(res => res.json())
             .then(data => {
-                console.log(`Fetched Data: ${data}`);
+                console.log("Fetched Data:", data);
+                data.forEach((album, index) => {
+                    console.log(`Album ${index}:`, album);
+                });
+
                 setAlbums(data)
             })
             .catch(err => console.error('Failed to fetch albums:', err))
