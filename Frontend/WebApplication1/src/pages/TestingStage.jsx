@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
+import LoginPage from './LoginPage'
 
 
 export default function TestingStage() {
     return (
-        <h1>Testing</h1>
+        <>
+            <h2>Testing Stage</h2>
+        </>
     )
 }

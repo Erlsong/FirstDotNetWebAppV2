@@ -18,7 +18,7 @@ namespace Presentation.Controllers
             _logger = logger;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             try
