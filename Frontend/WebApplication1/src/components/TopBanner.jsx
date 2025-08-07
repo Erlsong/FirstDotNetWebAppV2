@@ -1,4 +1,6 @@
-export default function TopBanner{
+import { useNavigate } from "react-router-dom"
+
+export default function TopBanner() {
     const nav = useNavigate()
 
     const navLogin = () => {

@@ -5,6 +5,7 @@ import TestingStage from './pages/TestingStage'
 import TestingNav from './components/TestingNav'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import UserPage from './pages/UserPage'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/Testing' element={<TestingStage />}></Route>
           <Route path='/Login' element={<LoginPage />}></Route>
           <Route path='/Register' element={<RegisterPage />}></Route>
+          <Route path='/user/:id' element={<UserPage />}></Route>
         </Routes>
       </BrowserRouter>
     </>
