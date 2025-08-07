@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 //enter PenName, password (confirm password), email
 //make a modal confirming the success or failure
@@ -9,6 +10,7 @@ export default function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const nav = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,6 +36,7 @@ export default function RegisterPage() {
             } else {
                 const data = await response.json();
                 console.log(`User created successfully: ${JSON.stringify(data)}`);
+                nav('/Home')
             }
         } catch (error) {
             console.error('Request failed', error);
