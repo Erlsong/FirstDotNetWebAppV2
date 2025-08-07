@@ -28,11 +28,16 @@ namespace Application.Services
         {
             var user = await _userService.GetByEmailAsync(email);
             if (user == null)
+            {
+                Console.WriteLine("The user doesn't exist.");
                 return null;
+            }
 
             var verifyResult = _passwordHasher.VerifyHashedPassword(null, user.HashedPassword, password);
             if (verifyResult != PasswordVerificationResult.Success)
-                return null;
+            {
+                Console.WriteLine("Password Verification failed.");
+                return null; }
 
             return GenerateToken(user);
         }

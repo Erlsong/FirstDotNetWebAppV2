@@ -105,7 +105,7 @@ namespace Presentation.Controllers
 
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             try

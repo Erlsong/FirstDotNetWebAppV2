@@ -24,7 +24,7 @@ namespace Presentation.Controllers
             try
             {
                 _logger.LogInformation("Logging In");
-                var token = await _authService.AuthenticateAsync(request.PenName, request.Password);
+                var token = await _authService.AuthenticateAsync(request.Email, request.Password);
                 if (token == null) return Unauthorized("Invalid credentials.");
                 return Ok(new { Token = token });
             }
@@ -38,7 +38,7 @@ namespace Presentation.Controllers
 
     public class LoginRequest
     {
-        public string PenName { get; set; } = null!;
+        public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
     }
 }
