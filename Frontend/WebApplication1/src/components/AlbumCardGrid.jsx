@@ -20,10 +20,14 @@ export default function AlbumCardGrid() {
 
     return (
         <>
-            <div className="album-grid card-grid">
-                {albums.map((album, index) => (
-                    <AlbumCard key={index} album={album} />
-                ))}
+            <div className="container mt-4">
+                <div className="row">
+                    {albums.map((album, index) => (
+                        <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
+                            <AlbumCard album={album} />
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     )
