@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TestingNav from "../components/TestingNav";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
@@ -7,6 +8,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const nav = useNavigate();
+    const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -25,8 +27,9 @@ export default function LoginPage() {
             }
 
             const data = await res.json();
-
+            login(data);
             console.log("Login successful", data);
+            nav('/')
         } catch (err) {
             setError(err.message);
         }
