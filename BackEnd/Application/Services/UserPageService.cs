@@ -31,7 +31,7 @@ namespace Application.Services
             _mapper = mapper;
         }
 
-        public async Task<UserDto> GetUserPageDetailsAsync(int id)
+        public async Task<UserPageDto> GetUserPageDetailsAsync(int id)
         {
             
             var user = await _userRepository.GetByIdAsync(id);
@@ -52,7 +52,7 @@ namespace Application.Services
                 }
             }
 
-            var userDto = _mapper.Map<UserDto>(user);
+            var userDto = _mapper.Map<UserPageDto>(user);
             var albumDtos = _mapper.Map<List<AlbumDto>>(albums);
             var postDtos = _mapper.Map<List<PostDto>>(posts);
             var commentDtos = _mapper.Map<List<CommentDto>>(comments);
@@ -68,8 +68,7 @@ namespace Application.Services
             }
 
             userDto.Albums = albumDtos;
-
-            // (Optional: If posts can exist outside of albums, you can add them to a separate list)
+            userDto.Posts = postDtos;
 
             return userDto;
         }

@@ -36,7 +36,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDto>> GetByIdAsync(int id)
+        public async Task<ActionResult<User>> GetByIdAsync(int id)
         {
             try
             {
