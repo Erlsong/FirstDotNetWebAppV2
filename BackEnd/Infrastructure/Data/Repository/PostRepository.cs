@@ -19,12 +19,12 @@ namespace Infrastructure.Data.Repository
             return await _context.Posts.ToListAsync();
         }
 
-        public async Task<IEnumerable<Post>> GetAllByUserAsync(int userId)
+        public async Task<IEnumerable<Post>> GetByUserIdAsync(int userId)
         {
             return await _context.Posts.Where(p=> p.UserId == userId).ToListAsync(); 
         }
 
-        public async Task<IEnumerable<Post>> GetAllByAlbumAsync(int albumId)
+        public async Task<IEnumerable<Post>> GetByAlbumIdAsync(int albumId)
         {
             return await _context.Posts.Where(p => p.AlbumId == albumId).ToListAsync();
         }

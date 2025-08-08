@@ -18,7 +18,7 @@ namespace Infrastructure.Data.Repository
         {
             return await _context.Albums.ToListAsync();
         }
-        public async Task<IEnumerable<Album>> GetAllByUserAsync(int userId)
+        public async Task<IEnumerable<Album>> GetByUserIdAsync(int userId)
         {
             return await _context.Albums.Where(a=>a.UserId == userId).ToListAsync();
         }

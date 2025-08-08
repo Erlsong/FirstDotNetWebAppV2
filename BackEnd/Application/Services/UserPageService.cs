@@ -38,8 +38,8 @@ namespace Application.Services
             if (user == null) return null;
 
             
-            var albums = await _albumRepository.GetAllByUserAsync(id);
-            var posts = await _postRepository.GetAllByUserAsync(id);
+            var albums = await _albumRepository.GetByUserIdAsync(id);
+            var posts = await _postRepository.GetByUserIdAsync(id);
 
             var postIds = posts.Select(p => p.Id).ToList();
             var comments = new List<Comment>();
@@ -47,7 +47,7 @@ namespace Application.Services
             {
                 foreach (var postId in postIds)
                 {
-                    var postComments = await _commentRepository.GetAllByPostAsync(id);
+                    var postComments = await _commentRepository.GetByPostIdAsync(id);
                     comments.AddRange(postComments);
                 }
             }

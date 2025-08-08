@@ -39,7 +39,7 @@ namespace Presentation.Controllers
         public async Task<ActionResult<IEnumerable<Album>>> GetAllByUser(int userId)
         {
             _logger.LogInformation($"Attempting to get all Albums from User with UserID: {userId}.");
-            var albums = await _albumService.GetAllByUserAsync(userId);
+            var albums = await _albumService.GetByUserIdAsync(userId);
             _logger.LogInformation($"Successfully retrieved {albums.Count()} Albums.");
             return Ok(albums);
         }

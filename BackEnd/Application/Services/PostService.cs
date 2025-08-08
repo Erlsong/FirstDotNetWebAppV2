@@ -12,8 +12,8 @@ namespace Application.Services
         }
 
         public async Task<IEnumerable<Post>> GetAllAsync() {return await _postRepo.GetAllAsync(); }
-        public async Task<IEnumerable<Post>> GetAllByUserAsync(int userId) { return await _postRepo.GetAllByUserAsync(userId); }
-        public async Task<IEnumerable<Post>> GetAllByAlbumAsync(int albumId) { return await _postRepo.GetAllByAlbumAsync(albumId); }
+        public async Task<IEnumerable<Post>> GetByUserIdAsync(int userId) { return await _postRepo.GetByUserIdAsync(userId); }
+        public async Task<IEnumerable<Post>> GetByAlbumIdAsync(int albumId) { return await _postRepo.GetByAlbumIdAsync(albumId); }
 
         public async Task<Post?> GetByIdAsync(int id) { return await _postRepo.GetByIdAsync(id);} 
 
