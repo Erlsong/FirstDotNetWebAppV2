@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 import AlbumCard from "../components/AlbumCard";
+import AlbumCardGrid from "../components/AlbumCardGrid";
+import TopBanner from "../components/TopBanner";
 //UserCard, banner with "Posts", "Albums", Comments
 //Render a grid of cards based on what the banner selects.
 export default function UserPage() {
@@ -48,6 +50,7 @@ export default function UserPage() {
 
     return (
         <>
+            <TopBanner></TopBanner>
             {user ? (
                 <>
                     <div>
@@ -60,13 +63,7 @@ export default function UserPage() {
                         <button>Comments</button>
                     </div>
                     <div>
-
-                        {albums.map((album, index) => (
-                            <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
-                                <AlbumCard album={album} />
-                            </div>
-                        ))}
-
+                        <AlbumCardGrid albums={albums} />
                     </div>
                 </>
             ) : (

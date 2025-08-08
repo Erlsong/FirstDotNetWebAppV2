@@ -1,24 +1,23 @@
 import AlbumCard from './AlbumCard.jsx'
-import { useEffect, useState } from 'react'
+import useAlbums from '../hooks/UseAlbums.jsx';
 
-export default function AlbumCardGrid() {
-    const [albums, setAlbums] = useState([])
+export default function AlbumCardGrid({ albums: propAlbums }) {
+    const { albums, error, loading } = useAlbums();
+    const displayAlbums = propAlbums || albums;
 
-    useEffect(() => {
-        fetch("https://localhost:59834/api/album")
-            .then(res => res.json())
-            .then(data => {
-                setAlbums(data)
-            })
-            .catch(err => console.error('Failed to fetch albums:', err))
-    }, [])
+    if (!propAlbums && loading) return <p>Loading albums...</p>;
+    if (!propAlbums && error) return <p>{error}</p>;
+
+    if (displayAlbums.length === 0) {
+        return <p>No albums available.</p>;
+    }
 
     return (
         <>
             <div className="container mt-4">
                 <div className="row">
-                    {albums.map((album, index) => (
-                        <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={index}>
+                    {displayAlbums.map((album) => (
+                        <div className="col-sm-6 col-md-4 col-lg-3 mb-4" key={album.id}>
                             <AlbumCard album={album} />
                         </div>
                     ))}

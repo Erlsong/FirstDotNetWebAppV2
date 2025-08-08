@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-
+import { Link } from "react-router-dom"
 export default function TopBanner() {
     const nav = useNavigate()
 
@@ -9,7 +9,7 @@ export default function TopBanner() {
     const navRegister = () => { nav('/Register') }
 
     return (<>
-        <h1>MyWebAppName</h1>
+        <Link to="/"><h1>MyWebAppName</h1></Link>
         <div>
             <button onClick={navLogin}>Login</button>
             <button onClick={navRegister}>Sign Up</button>
