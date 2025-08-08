@@ -1,4 +1,4 @@
-﻿
+﻿using Application.Interfaces;
 using Application.Services;
 using Application.Models.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +9,9 @@ namespace Presentation.Controllers
     [Route("api/user-pages")]
     public class UserPageController : ControllerBase
     {
-        private readonly UserPageService _userPageService;
+        private readonly IUserPageService _userPageService;
 
-        public UserPageController(UserPageService userPageService)
+        public UserPageController(IUserPageService userPageService)
         {
             _userPageService = userPageService;
         }

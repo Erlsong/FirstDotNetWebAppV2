@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class UserPageService
+    public class UserPageService : IUserPageService
     {
         private readonly IUserRepository _userRepository;
         private readonly IAlbumRepository _albumRepository;

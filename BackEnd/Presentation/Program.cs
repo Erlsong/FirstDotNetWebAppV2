@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Reflection;
 using System.Text;
+using Domain.Models;
+using Application.Mapper;
 
 
 
@@ -73,12 +75,25 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-// Dependency Injection: Register services and repositories
+// Register services and repositories
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddScoped<IAuthService, AuthService>();
+
 builder.Services.AddScoped<IAlbumService, AlbumService>();
 builder.Services.AddScoped<IAlbumRepository, AlbumRepository>();
+
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+
+builder.Services.AddScoped<IUserPageService, UserPageService>();
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 // Authentication Injection: Jwt
@@ -114,6 +129,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 // Allow React Cors
 app.UseCors("AllowReactApp");
 
@@ -124,12 +141,12 @@ app.MapGet("/", () => Results.Redirect("/swagger"));
 app.UseSerilogRequestLogging();
 
 // Authentication & Authorization
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
+
 
 app.MapControllers();
 
