@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.Extensions.Logging;
-using Presentation.Models;
-using Presentation.Models.Requests;
+
+using Application.Models.Requests;
+using Application.Models.Responses;
 
 
 namespace Presentation.Controllers
@@ -35,7 +36,7 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetByIdAsync(int id)
+        public async Task<ActionResult<UserDto>> GetByIdAsync(int id)
         {
             try
             {

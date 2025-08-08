@@ -18,6 +18,15 @@ namespace Infrastructure.Data.Repository
         {
             return await _context.Comments.ToListAsync();
         }
+        public async Task<IEnumerable<Comment>> GetAllByPostAsync(int postId)
+        {
+            return await _context.Comments.Where(c => c.PostId == postId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Comment>> GetAllByUserAsync(int userId)
+        {
+            return await _context.Comments.Where(c => c.UserId == userId).ToListAsync(); 
+        }
 
         public async Task<Comment?> GetByIdAsync(int id)
         {

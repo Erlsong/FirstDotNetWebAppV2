@@ -1,4 +1,4 @@
-﻿namespace Presentation.Models.Responses
+﻿namespace Application.Models.Responses
 {
     public class PostDto
 {
@@ -8,7 +8,7 @@
     public string? Content { get; set; }
 
     public int UserId { get; set; }
-    public int AuthorId { get; set; }
+    public int AlbumId { get; set; }
     public List<CommentDto> Comments { get; set; } = new List<CommentDto>();
 }
 }

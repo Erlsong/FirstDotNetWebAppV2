@@ -10,6 +10,8 @@ namespace Application.Interfaces
     public interface ICommentRepository
     {
         Task<IEnumerable<Comment>> GetAllAsync();
+        Task<IEnumerable<Comment>> GetAllByPostAsync(int postId);
+        Task<IEnumerable<Comment>> GetAllByUserAsync(int userId);
         Task<Comment?> GetByIdAsync(int id);
         Task<bool> CreateAsync(Comment comment);
         Task<bool> UpdateAsync(Comment comment);

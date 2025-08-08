@@ -4,8 +4,8 @@ using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Presentation.Models;
-using Presentation.Models.Requests;
+using Application.Models;
+using Application.Models.Responses;
 using System.Security.Claims;
 
 
@@ -67,7 +67,7 @@ namespace Presentation.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> PostAlbum([FromBody] AlbumRequest request)
+        public async Task<IActionResult> PostAlbum([FromBody] AlbumDto request)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace Presentation.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] AlbumRequest request)
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] AlbumDto request)
         {
             try
             {

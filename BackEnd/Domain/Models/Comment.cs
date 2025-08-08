@@ -14,6 +14,8 @@ namespace Domain.Models
 
         public int PostId { get; set; }
 
+        public int UserId { get; set; }
+
         public Comment(int id, string text, int postId)
         {
             Id = id;
