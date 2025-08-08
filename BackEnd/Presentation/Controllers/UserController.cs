@@ -39,13 +39,13 @@ namespace Presentation.Controllers
         {
             try
             {
-                var author = await _userService.GetByIdAsync(id);
-                if (author == null)
+                var user = await _userService.GetByIdAsync(id);
+                if (user == null)
                 {
                     return NotFound();
                 }
 
-                return Ok(author);
+                return Ok(user);
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Presentation.Controllers
             }
         }
 
-
+        //var albums = await _albumService.GetByUserId(id);
         [HttpPost]
         public async Task<IActionResult> PostUser([FromBody] CreateUserRequest request)
         {
