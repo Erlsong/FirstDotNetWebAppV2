@@ -1,8 +1,4 @@
--- Clear existing data (optional & careful!)
--- DELETE FROM Comments;
--- DELETE FROM Posts;
--- DELETE FROM Albums;
--- DELETE FROM Users;
+
 
 -------------------------
 -- 1. Insert 3 Users	PUT the password in order to login
@@ -78,142 +74,24 @@ INSERT INTO Posts (Title, Description, Content, AlbumId, UserId) VALUES
 ('Brick Serenade', 'Geometry meets sunlight.', 'Focus stacked urban wall.', 9, 3),
 ('Vertical Rhythm', 'Fire escapes become choreography.', 'Dramatic angles with shadows.', 9, 3);
 
+-- Inserts 3 Comments per Post
+INSERT INTO Comments (Text, PostId, UserId) VALUES
+-- Comments for Post 1
+('Great post! Really enjoyed reading it.', 1, 1),
+('Thanks for sharing this insight.', 1, 2),
+('I learned a lot from this post.', 1, 3),
 
--------------------------
--- 4. Insert 3 Comments per Post (27 x 3 = 81)
--------------------------
-INSERT INTO Comments (Text, PostId) VALUES
--- Post 1
-('Great post!', 1),
-('Really enjoyed this.', 1),
-('Looking forward to more.', 1),
+-- Comments for Post 2
+('Interesting perspective!', 2, 2),
+('Could you elaborate more on this?', 2, 3),
+('Nice write-up, looking forward to more.', 2, 3),
 
--- Post 2
-('Incredible work!', 2),
-('So inspiring.', 2),
-('Love the detail here.', 2),
+-- Comments for Post 3
+('This was very helpful, thanks!', 3, 1),
+('I disagree with some points here.', 3, 2),
+('Well explained and clear.', 3, 3);
 
--- Post 3
-('Amazing content!', 3),
-('This is gold.', 3),
-('Shared with my friends.', 3),
 
--- Post 4
-('Well done!', 4),
-('Very informative.', 4),
-('Keep it up!', 4),
 
--- Post 5
-('Mind-blowing stuff.', 5),
-('Loved reading this.', 5),
-('Thanks for sharing.', 5),
 
--- Post 6
-('Solid write-up.', 6),
-('Couldn’t agree more.', 6),
-('Saved this post.', 6),
 
--- Post 7
-('Just wow!', 7),
-('This hit home.', 7),
-('Following for more.', 7),
-
--- Post 8
-('I needed this today.', 8),
-('Bookmarking this.', 8),
-('You nailed it.', 8),
-
--- Post 9
-('Keep writing!', 9),
-('So thoughtful.', 9),
-('I appreciate this.', 9),
-
--- Post 10
-('Love your work.', 10),
-('Well articulated.', 10),
-('Great perspective.', 10),
-
--- Post 11
-('Learned something new.', 11),
-('Interesting take.', 11),
-('Top quality post.', 11),
-
--- Post 12
-('Beautifully written.', 12),
-('Big fan of this.', 12),
-('Subscribed immediately.', 12),
-
--- Post 13
-('Respect your insights.', 13),
-('Very creative.', 13),
-('Shared on my feed.', 13),
-
--- Post 14
-('Clear and concise.', 14),
-('Love this style.', 14),
-('Well structured.', 14),
-
--- Post 15
-('Thanks for posting!', 15),
-('Could read this all day.', 15),
-('Absolute gem.', 15),
-
--- Post 16
-('The best post today.', 16),
-('This is so real.', 16),
-('Great energy.', 16),
-
--- Post 17
-('You"re talented.', 17),
-('So refreshing.', 17),
-('A+ writing.', 17),
-
--- Post 18
-('Very valuable.', 18),
-('Keep going!', 18),
-('This is fantastic.', 18),
-
--- Post 19
-('Loved every word.', 19),
-('Impressive post.', 19),
-('This made my day.', 19),
-
--- Post 20
-('Smart and sharp.', 20),
-('Thank you!', 20),
-('This rocks.', 20),
-
--- Post 21
-('Clean content.', 21),
-('So engaging.', 21),
-('What a read!', 21),
-
--- Post 22
-('Brilliant!', 22),
-('Very relatable.', 22),
-('Good job.', 22),
-
--- Post 23
-('Exceptional.', 23),
-('Hit the mark.', 23),
-('Love your brain.', 23),
-
--- Post 24
-('Content goals.', 24),
-('Perfectly said.', 24),
-('Very thoughtful.', 24),
-
--- Post 25
-('Love this angle.', 25),
-('Genius.', 25),
-('You got this.', 25),
-
--- Post 26
-('So good.', 26),
-('Keep doing this.', 26),
-('Big yes.', 26),
-
--- Post 27
-('Massive respect.', 27),
-('This is everything.', 27),
-('Legendary.', 27);

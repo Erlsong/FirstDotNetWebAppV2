@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/user-pages")]
+    [Route("api/user-page")]
     public class UserPageController : ControllerBase
     {
         private readonly IUserPageService _userPageService;
